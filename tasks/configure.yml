@@ -1,0 +1,15 @@
+---
+
+- name: Build snmp_exporter images
+  docker_image:
+    build:
+      path: "{{ exporter_root_path }}/Dockerfiles/{{ item }}"
+      pull: false
+    name: "snmp_exporter"
+    tag: latest
+    source: build
+  become: yes
+  with_items:
+    - snmp_exporter
+    - blackbox_exporter
+    - ping_exporter

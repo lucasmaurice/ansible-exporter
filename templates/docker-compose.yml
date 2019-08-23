@@ -1,0 +1,26 @@
+---
+version: '3.7'
+services:
+  snmp_exporter:
+    image: "prom/snmp-exporter:v{{ snmp_exporter_version }}"
+    restart: always
+    ports:
+      - "{{ snmp_exporter_web_listen_address }}:9116"
+    volumes:
+      - "./{{ snmp_exporter_config_file }}:/etc/snmp_exporter/snmp.yml:ro"
+
+  ping_exporter:
+    image: gperiard/ping-exporter
+    restart: always
+    ports:
+      - "{{ ping_exporter_web_listen_address }}:8085"
+    dns: |
+      {% for dns in ping_exporter_dns.items() %}
+      - {{ dns }}
+      {% endfor %}
+
+  blackbox_exporter:
+    image: "prom/blackbox-exporter:v{{ blackbox_exporter_version }}"
+    restart: always
+    ports:
+      - "{{ blackbox_exporter_web_listen_address }}:9115"
