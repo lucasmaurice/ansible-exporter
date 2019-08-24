@@ -8,8 +8,8 @@
     state: directory
   with_items:
     - "{{ exporter_root_path }}"
-    - "{{ exporter_root_path }}/configs"
     - "{{ exporter_root_path }}/Dockerfiles"
+    - "{{ exporter_root_path }}/Dockerfiles/Configs"
 
 - name: Set config files
   include_tasks: config.yml

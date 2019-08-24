@@ -3,9 +3,10 @@
 - name: Build snmp_exporter images
   docker_image:
     build:
-      path: "{{ exporter_root_path }}/Dockerfiles/{{ item }}"
+      path: "{{ exporter_root_path }}/Dockerfiles"
       pull: false
-    name: "snmp_exporter"
+      dockerfile: "{{ item }}"
+    name: "{{ item }}"
     tag: latest
     source: build
   become: yes

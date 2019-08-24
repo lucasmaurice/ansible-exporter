@@ -18,7 +18,7 @@ blackbox_exporter_configuration_modules:
 
 # Default for snmp
 snmp_exporter_scale: 4
-snmp_exporter_version: 0.14.0
+snmp_exporter_version: 0.15.0
 snmp_exporter_web_listen_address: "9116"
 snmp_exporter_config_file: "snmp.yml"
 snmp_community_password: "BigPassword"
