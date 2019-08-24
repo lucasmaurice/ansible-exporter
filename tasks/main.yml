@@ -16,3 +16,6 @@
 
 - name: Build docker images
   include_tasks: configure.yml
+
+- name: Running Docker exporter images
+  include_tasks: running.yml

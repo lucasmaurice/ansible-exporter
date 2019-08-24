@@ -1,0 +1,11 @@
+---
+
+- name: Run container
+  docker_container:
+    name: ohno
+    state: present
+    image: "{{ item }}"
+  with_items:
+    - snmp_exporter
+    - blackbox_exporter
+    - ping_exporter

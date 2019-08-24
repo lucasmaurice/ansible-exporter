@@ -3,7 +3,7 @@
   hosts: all
   vars:
     pip_install_packages:
-      - docker
+      - docker-py
   pre_tasks:
     - name: Update apt cache.
       apt: update_cache=yes
