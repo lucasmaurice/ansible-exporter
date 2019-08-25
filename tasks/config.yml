@@ -5,18 +5,15 @@
     src: "{{ item }}"
     dest: "{{ exporter_root_path }}/Dockerfiles/{{ item | regex_replace('.j2','') }}"
     mode: 0755
-    owner: root
   with_items:
     - snmp_exporter.j2
     - blackbox_exporter.j2
     - ping_exporter.j2
-    # - docker-compose.yml
 
 - name: Push config
   template:
     src: "{{ item }}"
-    dest: "{{ exporter_root_path }}/Dockerfiles/Configs/{{ item }}"
+    dest: "{{ exporter_root_path }}/Configs/"
     mode: 0755
-    owner: root
   with_items:
     - "{{ snmp_exporter_config_file }}"

@@ -3,4 +3,3 @@
 # https://github.com/elastic/elasticsearch-docker
 FROM prom/snmp-exporter:v{{ snmp_exporter_version }}
 EXPOSE {{ snmp_exporter_web_listen_address }}
-ADD Configs/{{ snmp_exporter_config_file }} /etc/snmp_exporter/snmp.yml

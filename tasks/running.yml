@@ -1,11 +1,39 @@
 ---
 
-- name: Run container
+- name: Create the snmp_exporter container.
   docker_container:
-    name: ohno
-    state: present
-    image: "{{ item }}"
-  with_items:
-    - snmp_exporter
-    - blackbox_exporter
-    - ping_exporter
+    recreate: true
+    name: "snmp_exporter"
+    hostname: "snmp_exporter"
+    image: "snmp_exporter"
+    ports:
+      - "{{ snmp_exporter_web_listen_address }}:{{ snmp_exporter_web_listen_address }}"
+    volumes:
+      - "{{ exporter_root_path }}/Configs/snmp.yml:/etc/snmp_exporter/snmp.yml:ro"
+  tags: molecule-notest.
+  changed_when: false
+  become: yes
+
+- name: Create the blackbox_exporter container.
+  docker_container:
+    recreate: true
+    name: "blackbox_exporter"
+    hostname: "blackbox_exporter"
+    image: "blackbox_exporter"
+    ports:
+      - "{{ blackbox_exporter_web_listen_address }}:{{ blackbox_exporter_web_listen_address }}"
+  tags: molecule-notest.
+  changed_when: false
+  become: yes
+
+- name: Create the ping_exporter container.
+  docker_container:
+    recreate: true
+    name: "ping_exporter"
+    hostname: "ping_exporter"
+    image: "ping_exporter"
+    ports:
+      - "{{ ping_exporter_web_listen_address }}:{{ ping_exporter_web_listen_address }}"
+  tags: molecule-notest.
+  changed_when: false
+  become: yes

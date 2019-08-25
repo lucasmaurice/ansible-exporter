@@ -1,6 +1,6 @@
 ---
 
-- name: Build snmp_exporter images
+- name: Build docker images
   docker_image:
     build:
       path: "{{ exporter_root_path }}/Dockerfiles"

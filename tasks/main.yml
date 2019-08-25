@@ -3,19 +3,18 @@
   file:
     path: "{{ item }}"
     mode: 0755
-    owner: root
     recurse: true
     state: directory
   with_items:
     - "{{ exporter_root_path }}"
     - "{{ exporter_root_path }}/Dockerfiles"
-    - "{{ exporter_root_path }}/Dockerfiles/Configs"
+    - "{{ exporter_root_path }}/Configs"
 
 - name: Set config files
   include_tasks: config.yml
 
 - name: Build docker images
-  include_tasks: configure.yml
+  include_tasks: build_images.yml
 
 - name: Running Docker exporter images
   include_tasks: running.yml
