@@ -6,15 +6,7 @@ blackbox_exporter_scale: 3
 blackbox_exporter_version: 0.14.0
 blackbox_exporter_web_listen_address: "9115"
 blackbox_exporter_cli_flags: {}
-
-blackbox_exporter_configuration_modules:
-  http_2xx:
-    prober: http
-    timeout: 5s
-    http:
-      method: GET
-      valid_status_codes: []
-
+blackbox_exporter_configuration_modules: "blackbox.yml"
 
 # Default for snmp
 snmp_exporter_scale: 4

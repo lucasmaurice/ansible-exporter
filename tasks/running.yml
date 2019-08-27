@@ -22,7 +22,9 @@
     image: "blackbox_exporter"
     ports:
       - "{{ blackbox_exporter_web_listen_address }}:{{ blackbox_exporter_web_listen_address }}"
-  tags: molecule-notest
+    volumes:
+      - "{{ exporter_root_path }}/Configs/blackbox.yml:/etc/blackbox_exporter/config.yml:ro"
+  tags: molecule-notest.
   changed_when: false
   become: yes
 
