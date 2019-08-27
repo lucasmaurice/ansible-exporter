@@ -17,3 +17,4 @@
     mode: 0755
   with_items:
     - "{{ snmp_exporter_config_file }}"
+    - "{{ blackbox_exporter_configuration_modules }}"
