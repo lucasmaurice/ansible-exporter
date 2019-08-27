@@ -10,7 +10,7 @@
       - "{{ snmp_exporter_web_listen_address }}:{{ snmp_exporter_web_listen_address }}"
     volumes:
       - "{{ exporter_root_path }}/Configs/snmp.yml:/etc/snmp_exporter/snmp.yml:ro"
-  tags: molecule-notest.
+  tags: molecule-notest
   changed_when: false
   become: yes
 
@@ -22,7 +22,7 @@
     image: "blackbox_exporter"
     ports:
       - "{{ blackbox_exporter_web_listen_address }}:{{ blackbox_exporter_web_listen_address }}"
-  tags: molecule-notest.
+  tags: molecule-notest
   changed_when: false
   become: yes
 
@@ -34,6 +34,6 @@
     image: "ping_exporter"
     ports:
       - "{{ ping_exporter_web_listen_address }}:{{ ping_exporter_web_listen_address }}"
-  tags: molecule-notest.
+  tags: molecule-notest
   changed_when: false
   become: yes

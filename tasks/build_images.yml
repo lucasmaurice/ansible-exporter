@@ -10,6 +10,7 @@
     tag: latest
     source: build
   become: yes
+  tags: molecule-notest
   with_items:
     - snmp_exporter
     - blackbox_exporter
